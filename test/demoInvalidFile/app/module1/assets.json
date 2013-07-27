@@ -1,0 +1,10 @@
+{
+  "fileList":[
+    {"name":"file1.js", "params":{}}
+  ],
+  "filePlugins": ["compilejs"],
+
+  "filePluginParameters" : {
+      "compilejs":{}
+  }  
+}
