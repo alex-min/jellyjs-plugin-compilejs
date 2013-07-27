@@ -4,11 +4,22 @@ module.exports = {
     return cb();
   },
   oncall: function(obj, params, cb) {
+    var content;
+
     if (obj.File !== true) {
       cb(new Error("The compilejs plugin can only be called on Files"));
       return;
     }
     this.getLogger().info("Compiling file '" + (obj.getId()) + "'");
+    content = obj.getCurrentContent();
+    if (content === null) {
+      this.getLogger().warn("No content found for ID '" + (obj.getId()) + "'");
+      cb();
+    }
+    if (content.extension !== 'js' && content.extension !== 'json') {
+      cb();
+      return;
+    }
     return obj.updateAndExecuteCurrentContent(cb);
   },
   unload: function(cb) {

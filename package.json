@@ -1,6 +1,6 @@
 {
   "name": "jellyjs-plugin-compilejs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Jelly.js compilejs Plugin",
   "main": "index.js",
   "scripts": {

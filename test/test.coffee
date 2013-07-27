@@ -53,4 +53,13 @@ describe('#Plugin::compilejs', ->
       cb('No errors returned')
     )
   )
+  it('Should ignore non JS/JSON files', (cb) ->
+    jelly = new jy.Jelly()
+    jelly.boot({
+        directory:"#{__dirname}/demoCompileJSOnly"
+        folderPlugins:[{name:'compilejs', directory:pluginDir}]
+    }, (err) ->
+      cb(err)
+    )
+  )
 )

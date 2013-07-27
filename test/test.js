@@ -70,7 +70,7 @@ describe('#Plugin::compilejs', function() {
       return cb('No errors returned');
     });
   });
-  return it('Should raise an error if the plugin is not used on Files', function(cb) {
+  it('Should raise an error if the plugin is not used on Files', function(cb) {
     var jelly;
 
     jelly = new jy.Jelly();
@@ -89,6 +89,22 @@ describe('#Plugin::compilejs', function() {
         return;
       }
       return cb('No errors returned');
+    });
+  });
+  return it('Should ignore non JS/JSON files', function(cb) {
+    var jelly;
+
+    jelly = new jy.Jelly();
+    return jelly.boot({
+      directory: "" + __dirname + "/demoCompileJSOnly",
+      folderPlugins: [
+        {
+          name: 'compilejs',
+          directory: pluginDir
+        }
+      ]
+    }, function(err) {
+      return cb(err);
     });
   });
 });
